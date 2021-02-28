@@ -1,0 +1,19 @@
+What does this game need?
+    - Players
+        - Each player has a total and needs to be able to place a wager for each hand
+        - totals need to update hand to hand
+        - Each player needs to be able to hold a card
+        - Each player needs a way to update the card they are holding when the game ends
+    
+    - Deck
+        - deck needs 52 cards with suit and value
+        - deck need to be able to be shuffled
+        - after a game, all cards need to be restored to the deck
+        - Deck needs to be in a format where we can draw the top card
+    
+    - game
+        - Game needs to be able evaluate the hands of each player to determine winner
+        - since suits matter, we could convert suits into values but it doesnt hold
+            - 2spade=6 3diamond=4
+        - evaluate values first, then suits when tie
+        - After game is done, pot needs to update (unless tie, then ante up again)
