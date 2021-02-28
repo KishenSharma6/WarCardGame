@@ -9,6 +9,7 @@ class Card():
         print("%s of %s" %(self.value, self.suit))
 
 class Deck():
+    #test
     def __init__(self):
         self.cards= []
         self.build()
