@@ -21,7 +21,7 @@ class Deck():
     
     def show(self):
         """
-        For testing purposes only, delete later
+        Show card
         """
         for card in self.cards:
             card.show()
@@ -31,8 +31,8 @@ class Deck():
             r= random.randint(0,i)
             self.cards[i], self.cards[r]= self.cards[r], self.cards[i] 
 
-    def draw_card(self, deck):
-        return random.choice(deck)
+    def draw_card(self):
+        return self.cards.pop()
 
 class Player():
     def __init__(self, name, amount, card= None):
@@ -46,5 +46,12 @@ class Player():
         else:
             self.wager= wager
             self.amount= self.amount - wager
+
+class War():
+    def __init__(self, player1, player2):
+        self.player1= player1
+        self.player2= player2
     
+    def play_game(self):
+        pass
     
