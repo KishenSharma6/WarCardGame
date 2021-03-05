@@ -5,8 +5,8 @@ class Card():
         self.suit= suit
         self.value= value
 
-    def show(self):
-        print("%s of %s" %(self.value, self.suit))
+    def __repr__(self):
+        return "%s of %s" %(self.value, self.suit)
 
 class Deck():
     #test
@@ -54,5 +54,6 @@ class War():
         self.player2= player2
     
     def play_game(self):
-        pass
+        #compare digits
+
     
