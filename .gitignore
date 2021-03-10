@@ -3,3 +3,7 @@ __pycache__
 
 #SandBox
 SandBox.py
+
+.vscode
+
+.ipynb_checkpoints
