@@ -9,51 +9,55 @@ class Card():
         return "%s of %s" %(self.value, self.suit)
 
 class Deck():
-    #test
-    def __init__(self):
-        self.cards= []
-        self.build()
         
+    def __init__(self):
+        self.cards= []                        
+        self.build()
+       
     def build(self):
         #Build Deck of cards using Card Class
         for suit in ['diamonds', 'clubs', 'hearts', 'spades']:
-            for value in range(1,14):
+            for value in ["A", "2", "3", "4", "5", "6", 
+                      "7", "8", "9", "10", "J", "Q", "K"]:
                 self.cards.append(Card(suit,value))
     
     def shuffle(self):
-        for i in range(len(self.cards) - 1,0,-1):
-            r= random.randint(0,i)
-            self.cards[i], self.cards[r]= self.cards[r], self.cards[i] 
+        if len(self.cards) > 1:
+            random.shuffle(self.cards)
 
-    def draw_card(self):
-        return self.cards.pop()
+    def deal(self):
+        if len(self.cards) > 1:
+            return self.cards.pop(0)
 
-class Player():
-    def __init__(self, name, amount, card= None):
-        self.name= name
-        self.amount= amount
-        self.card= card
+class Hand():
+    def __init__(self, opponent= False):
+        self.opponent= opponent
+        self.cards= []
+        self.value = 0
+    
+    def draw_card(self, card):
+        self.cards.append(card)
 
-    def show(self):
-        """
-        Show card
-        """
+    def calculate_value(self):
+        self.value= 0
+        has_ace= False
         for card in self.cards:
-            card.show()
+            if card.value.isnumeric():
+                self.value += int(card.value)
+            else:
+                if card.value == 'A':
+                    self.value+= 11
+                else:
+                    self.value+= 10
+    
+    def get_value(self):
+        self.calculate_value()
+        return self.value
 
-    def place_bet(self, wager):
-        if wager > self.amount:
-            print('%s does not have enough funds to place bet' %(self.name))
+    def display(self):
+        if self.opponent:
+            print(self.cards[0])
         else:
-            self.wager= wager
-            self.amount= self.amount - wager
-
-class War():
-    def __init__(self, player1, player2):
-        self.player1= player1
-        self.player2= player2
-    
-    def play_game(self):
-        #compare digits
-
-    
+            for card in self.cards:
+                print(card)
+            print("Value:", self.get_value())
